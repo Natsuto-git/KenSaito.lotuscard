@@ -233,7 +233,9 @@ function getImageAsBase64(imagePath) {
                 canvas.height = canvasHeight;
                 
                 ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                const dataURL = canvas.toDataURL('image/jpeg', 0.8);
+                // PNG画像の場合はPNG形式で、それ以外はJPEG形式で保存
+                const isPNG = imagePath.toLowerCase().endsWith('.png');
+                const dataURL = isPNG ? canvas.toDataURL('image/png') : canvas.toDataURL('image/jpeg', 0.8);
                 resolve(dataURL.split(',')[1]); // Base64部分のみを取得
             } catch (error) {
                 console.log('画像変換エラー:', error);
@@ -264,19 +266,26 @@ async function downloadContactFromModal() {
         }
         
         // vCardを作成
+        // サイトURLを固定
+        const siteURL = 'https://ken-saito-lotuscard.vercel.app';
+        
         let vCardData = `BEGIN:VCARD
 VERSION:3.0
+N:齋藤;健;;;
 FN:齋藤健
 ORG:慶應義塾大学 環境情報学部
 TITLE:大学4年生
-EMAIL:ken.yoda.saito@gmail.com
-URL:https://www.linkedin.com/in/ken-yoda-saito
+EMAIL;TYPE=INTERNET:ken.yoda.saito@gmail.com
+URL:${siteURL}
 NOTE:アートとテクノロジーで世界に感動を`;
 
         // プロフィール画像がある場合のみ追加
         if (profileImageBase64 && profileImageBase64.length > 0) {
+            // vCardのPHOTOフィールドはENCODING=bを使用（多くのリーダーでサポート）
+            // Base64データに改行が含まれないようにする
+            const cleanBase64 = profileImageBase64.replace(/\s/g, '');
             vCardData += `
-PHOTO;TYPE=JPEG;ENCODING=BASE64:${profileImageBase64}`;
+PHOTO;ENCODING=b;TYPE=PNG:${cleanBase64}`;
         }
 
         vCardData += `
