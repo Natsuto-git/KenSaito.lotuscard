@@ -121,13 +121,11 @@ function initSocialLinks() {
 function showContactInfo() {
     const contactInfo = `
 連絡先情報:
-📧 Email: morinaga@fcandm926.com
-📱 Phone: 090-5292-6482
-📷 Instagram: @fcandm.morinaga
-📘 Facebook: 守永博貴
+📧 Email: ken.yoda.saito@gmail.com
+💼 LinkedIn: ken.yoda.saito
     `.trim();
     
-    createCustomModal('守永博貴 - 連絡先情報', contactInfo);
+    createCustomModal('齋藤健 - 連絡先情報', contactInfo);
 }
 
 // カスタムモーダル作成
@@ -169,10 +167,10 @@ function createCustomModal(title, content) {
     `;
 
     modalContent.innerHTML = `
-        <h3 style="color: #ff6b35; margin-bottom: 20px; font-size: 24px;">${title}</h3>
+        <h3 style="color: #4FC3F7; margin-bottom: 20px; font-size: 24px;">${title}</h3>
         <div style="white-space: pre-line; line-height: 1.8; color: #333; margin-bottom: 30px;">${content}</div>
         <button onclick="this.closest('.custom-modal').remove()" 
-                style="background: #ff6b35; color: white; border: none; padding: 12px 24px; 
+                style="background: #4FC3F7; color: white; border: none; padding: 12px 24px; 
                        border-radius: 8px; cursor: pointer; font-weight: 600;">
             閉じる
         </button>
@@ -260,7 +258,7 @@ async function downloadContactFromModal() {
         // プロフィール画像をBase64で取得（エラーが発生しても続行）
         let profileImageBase64 = '';
         try {
-            profileImageBase64 = await getImageAsBase64('icon copy.jpeg');
+            profileImageBase64 = await getImageAsBase64('齋藤健.png');
         } catch (error) {
             console.log('画像取得エラー（続行）:', error);
         }
@@ -268,14 +266,12 @@ async function downloadContactFromModal() {
         // vCardを作成
         let vCardData = `BEGIN:VCARD
 VERSION:3.0
-FN:守永博貴
-ORG:株式会社FC&M
-TITLE:代表取締役
-EMAIL:morinaga@fcandm926.com
-TEL:09052926482
-URL:https://www.instagram.com/fcandm.morinaga
-URL:https://www.facebook.com/profile.php?id=100014048287809
-NOTE:財務コンサルタント・トリプルインカムメソッド開発者`;
+FN:齋藤健
+ORG:慶應義塾大学 環境情報学部
+TITLE:大学4年生
+EMAIL:ken.yoda.saito@gmail.com
+URL:https://www.linkedin.com/in/ken-yoda-saito
+NOTE:アートとテクノロジーで世界に感動を`;
 
         // プロフィール画像がある場合のみ追加
         if (profileImageBase64 && profileImageBase64.length > 0) {
@@ -292,7 +288,7 @@ END:VCARD`;
         
         const link = document.createElement('a');
         link.href = url;
-        link.download = 'Morinaga_Hiroki.vcf'; // 英語ファイル名で問題回避
+        link.download = 'Ken_Saito.vcf'; // 英語ファイル名で問題回避
         link.style.display = 'none';
         document.body.appendChild(link);
         link.click();
@@ -342,7 +338,7 @@ function showToast(message) {
         bottom: 20px;
         left: 50%;
         transform: translateX(-50%);
-        background: #ff6b35;
+        background: #4FC3F7;
         color: white;
         padding: 12px 24px;
         border-radius: 8px;
@@ -653,7 +649,7 @@ function enableEditMode() {
         const el = document.querySelector(element.selector);
         if (el) {
             el.contentEditable = true;
-            el.style.border = '2px dashed #ff6b35';
+            el.style.border = '2px dashed #4FC3F7';
             el.style.padding = '5px';
             el.style.borderRadius = '5px';
         }
@@ -701,9 +697,9 @@ function showEditInstructions() {
     const instructions = document.createElement('div');
     instructions.id = 'edit-instructions';
     instructions.innerHTML = `
-        <div style="position: fixed; top: 20px; right: 20px; background: rgba(255, 107, 53, 0.9); color: white; padding: 15px; border-radius: 10px; z-index: 1000; max-width: 300px;">
+        <div style="position: fixed; top: 20px; right: 20px; background: rgba(79, 195, 247, 0.9); color: white; padding: 15px; border-radius: 10px; z-index: 1000; max-width: 300px;">
             <h4>編集モード</h4>
-            <p>• オレンジの枠線の要素をクリックして編集</p>
+            <p>• 水色の枠線の要素をクリックして編集</p>
             <p>• 変更後は「保存」ボタンをクリック</p>
             <p>• 編集をキャンセルする場合はページを再読み込み</p>
         </div>
@@ -715,7 +711,7 @@ function showEditInstructions() {
 function showSaveNotification() {
     const notification = document.createElement('div');
     notification.innerHTML = `
-        <div style="position: fixed; top: 20px; right: 20px; background: #4CAF50; color: white; padding: 15px; border-radius: 10px; z-index: 1000;">
+        <div style="position: fixed; top: 20px; right: 20px; background: #4FC3F7; color: white; padding: 15px; border-radius: 10px; z-index: 1000;">
             <i class="fas fa-check"></i> 変更が保存されました！
         </div>
     `;
@@ -754,6 +750,25 @@ function toggleIntro() {
         detail.style.display = 'none';
         preview.style.display = 'block';
         preview.style.animation = 'fadeInUp 0.5s ease';
+    }
+}
+
+// 活動セクションのトグル機能
+function toggleActivities() {
+    const expandable = document.querySelector('.activity-expandable');
+    const toggleBtn = document.querySelector('.activity-toggle-btn');
+    const toggleText = toggleBtn.querySelector('.toggle-text');
+    
+    if (expandable.style.display === 'none' || !expandable.style.display) {
+        // 展開
+        expandable.style.display = 'block';
+        toggleBtn.classList.add('expanded');
+        toggleText.textContent = '閉じる';
+    } else {
+        // 閉じる
+        expandable.style.display = 'none';
+        toggleBtn.classList.remove('expanded');
+        toggleText.textContent = 'もっと見る';
     }
 }
 
@@ -1075,28 +1090,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    if (addToHomeBtn) addToHomeBtn.addEventListener('click', () => {
-        const instructions = `ホーム画面に追加する手順
-
-【iPhone/iPadの場合】
-1. Safariでサイトを開く
-2. 共有アイコン（□↑）をタップ
-3. 「ホーム画面に追加」をタップ
-4. 「追加」をタップ
-
-【Android(Chrome)の場合】
-1. Chromeでサイトを開く
-2. 右上の「⋮」メニューをタップ
-3. 「ホーム画面に追加」をタップ
-4. 案内に従って追加
-
-追加後は守永博貴さんのプロフィール画像がアイコンとして表示され、「守永博貴」という名前でホーム画面に追加されます。`;
-        alert(instructions);
-        if (saveModal) { 
-            saveModal.style.display = 'none'; 
-            document.body.style.overflow = ''; 
-        }
-    });
 });
 
 // ページ読み込み時に編集ボタンを表示するかチェック

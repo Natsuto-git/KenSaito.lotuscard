@@ -1,71 +1,71 @@
 {
-  "name": "守永博貴 - プロフィール",
-  "short_name": "守永博貴",
-  "description": "株式会社FC&M 代表取締役 守永博貴のプロフィールページ",
+  "name": "齋藤健 - プロフィール",
+  "short_name": "齋藤健",
+  "description": "慶應義塾大学 環境情報学部 齋藤健のプロフィールページ",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#000000",
-  "theme_color": "#4CAF50",
+  "theme_color": "#4FC3F7",
   "orientation": "portrait",
   "icons": [
     {
-      "src": "icon copy.jpeg",
+      "src": "齋藤健.png",
       "sizes": "72x72",
-      "type": "image/jpeg",
+      "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icon copy.jpeg",
+      "src": "齋藤健.png",
       "sizes": "96x96",
-      "type": "image/jpeg",
+      "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icon copy.jpeg",
+      "src": "齋藤健.png",
       "sizes": "128x128",
-      "type": "image/jpeg",
+      "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icon copy.jpeg",
+      "src": "齋藤健.png",
       "sizes": "144x144",
-      "type": "image/jpeg",
+      "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icon copy.jpeg",
+      "src": "齋藤健.png",
       "sizes": "152x152",
-      "type": "image/jpeg",
+      "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icon copy.jpeg",
+      "src": "齋藤健.png",
       "sizes": "192x192",
-      "type": "image/jpeg",
+      "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icon copy.jpeg",
+      "src": "齋藤健.png",
       "sizes": "384x384",
-      "type": "image/jpeg",
+      "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icon copy.jpeg",
+      "src": "齋藤健.png",
       "sizes": "512x512",
-      "type": "image/jpeg",
+      "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "icon copy.jpeg",
+      "src": "齋藤健.png",
       "sizes": "192x192",
-      "type": "image/jpeg",
+      "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "icon copy.jpeg",
+      "src": "齋藤健.png",
       "sizes": "512x512",
-      "type": "image/jpeg",
+      "type": "image/png",
       "purpose": "maskable"
     }
   ],
